@@ -3,7 +3,7 @@ const robotImageModel = require('../Db/model.db.image');
 const route = express.Router();
 
 
-route.post('/robot', async (req, res) => {
+route.post('/robot', (req, res) => {
     console.log("req", req.body.robotName)
     let roboImageObject = {}
     roboImageObject.robotName = req.body.robotName;
@@ -13,7 +13,7 @@ route.post('/robot', async (req, res) => {
     roboImageObject.hindi =  req.body.hindi;
     roboImageObject.gallery = req.body.gallery;
     let roboImagesModel = new robotImageModel(roboImageObject)
-    await roboImagesModel.save(); 
+    roboImagesModel.save(); 
     res.json(roboImageObject)
     res.status(200)
 })
