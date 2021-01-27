@@ -24,6 +24,9 @@ route.get('/robot', (req, res) => {
         console.log('data', data)
         res.json(data)
     })
+    .catch(err => {
+        console.log('err', err)
+    })
 })
 
 route.get('/robot/:robotname', (req, res) => {
