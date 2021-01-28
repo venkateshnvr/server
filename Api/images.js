@@ -18,15 +18,20 @@ route.post('/robot', (req, res) => {
     res.status(200)
 })
 
-route.get('/robot', (req, res) => {
-    robotImageModel.find({})
-    .then(data => {
-        console.log('data', data)
+route.get('/robot', async (req, res) => {
+    try {
+        const data = await robotImageModel.find({});
         res.json(data)
-    })
-    .catch(err => {
-        console.log('err', err)
-    })
+    } catch(e) {
+        console.log('Catch an error: ', e)
+    }
+    // .then(data => {
+    //     console.log('data', data)
+    //     res.json(data)
+    // })
+    // .catch(err => {
+    //     console.log('err', err)
+    // })
 })
 
 route.get('/robot/:robotname', (req, res) => {
